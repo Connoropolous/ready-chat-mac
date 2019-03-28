@@ -1,0 +1,11 @@
+{
+    "webproxy": {
+        "connection": {
+            "rsaBits": 1024,
+            "bind": [
+                "wss://0.0.0.0:5555/"
+            ]
+        },
+        "wssRelayPeers": null
+    }
+}

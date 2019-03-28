@@ -1,0 +1,35 @@
+~*~ 2019-3-27 21:19:55 - 1553735995032 (n3h-bin) [w] attempting read stdin
+~*~ 2019-3-27 21:19:55 - 1553735995036 (n3h-bin) [w] got stdin config!
+{"webproxy":{"connection":{"rsaBits":1024,"bind":["wss://0.0.0.0:0/"]},"wssAdvertise":"auto","wssRelayPeers":null}}
+~*~ 2019-3-27 21:19:55 - 1553735995093 (wss-connection) [i] listening at wss://127.0.0.1:60665/
+~*~ 2019-3-27 21:19:55 - 1553735995097 (p2p-backend) [i] peerId:
+HcScIaQpVVf7h53db66o4u34ZYKdx8Ukjn9A7Uf4mJFDv3ain9qIbwXhd8kmfdi
+~*~ 2019-3-27 21:19:55 - 1553735995118 (wss-server-utils) [i] loaded rsa fingerprint
+7Tn89L0me1xWPuuYiOxVOZvgwV0=
+~*~ 2019-3-27 21:19:55 - 1553735995120 (wss-connection) [i] listening at wss://192.168.0.28:60666/
+~*~ 2019-3-27 21:19:55 - 1553735995121 (@hackmode@) [i] p2p bound
+wss://192.168.0.28:60666/?a=HcScIaQpVVf7h53db66o4u34ZYKdx8Ukjn9A7Uf4mJFDv3ain9qIbwXhd8kmfdi
+~*~ 2019-3-27 21:19:55 - 1553735995075 (wss-server-utils) [i] loaded rsa fingerprint
+7Tn89L0me1xWPuuYiOxVOZvgwV0=
+~*~ 2019-3-27 21:19:55 - 1553735995037 (n3h-bin) [i] executing mode HACK
+~*~ 2019-3-27 21:19:55 - 1553735995039 (*n3hMode*) [i] @@ CONFIG @@
+{
+  "ipc": {
+    "connection": {
+      "rsaBits": 1024,
+      "bind": [
+        "wss://127.0.0.1:0/"
+      ]
+    }
+  },
+  "webproxy": {
+    "connection": {
+      "rsaBits": 1024,
+      "bind": [
+        "wss://0.0.0.0:0/"
+      ]
+    },
+    "wssAdvertise": "auto",
+    "wssRelayPeers": null
+  }
+}
