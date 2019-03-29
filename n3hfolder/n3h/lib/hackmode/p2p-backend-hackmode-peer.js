@@ -7,6 +7,8 @@ const log = tweetlog('p2p-backend')
 const { URL } = require('url')
 const msgpack = require('msgpack-lite')
 
+const timeoutRegex = /Error: timeout/
+
 const {
   Connection,
   Dht,
@@ -39,9 +41,24 @@ class P2pBackendHackmodePeer extends AsyncClass {
     // Map of connection -> PeerAddress
     this._conByPeerAddress = new Map()
 
-    // Create ID with a a random KeyBundle
-    const seed = new mosodium.SecBuf(32)
-    seed.randomize()
+    let seed = null
+
+    // HACK - if we have a wss advertise, hash it and use as transport id seed
+    // to achieve a static id until persistence is available
+    if (
+      typeof initOptions.wssAdvertise === 'string' &&
+      initOptions.wssAdvertise !== 'auto'
+    ) {
+      log.i('generating transport id seed from wssAdvertise hash')
+      seed = mosodium.hash.sha256(Buffer.from(initOptions.wssAdvertise))
+      seed = mosodium.SecBuf.from(seed)
+    } else {
+      // Create ID with a a random KeyBundle
+      log.i('generating transport id seed randomly')
+      seed = new mosodium.SecBuf(32)
+      seed.randomize()
+    }
+
     this._keyBundle = await KeyBundle.newFromSeed(seed)
     log.i('peerId:', this._keyBundle.getId())
 
@@ -200,8 +217,21 @@ class P2pBackendHackmodePeer extends AsyncClass {
       throw new Error('data must be a Buffer')
     }
     // Connect to all provided peers
-    const cIds = await Promise.all(peerAddressList.map(
-      a => this._ensureCIdForPeerAddress(a)))
+    
+    let cIds = await Promise.all(peerAddressList.map(
+      a => this._ensureCIdForPeerAddress(a).catch(e => {
+        if (!timeoutRegex.test(e)) {
+          console.error('@@ fixme publish error catch @@', e)
+        }
+      })))
+
+    // Filter for valid cIds and exit if there are none
+    cIds = cIds.filter(cId => cId !== undefined)
+    if (cIds.length === 0) {
+      // log.i('Skipping publish because no connections to peers')
+      return
+    }
+
     // Send to all peers
     return this._sendByCId(
       cIds, msgId, fromPeerAddress, peerAddressList, type, data)
@@ -238,6 +268,13 @@ class P2pBackendHackmodePeer extends AsyncClass {
     }
     // Try to connect
     const promise = this._newConTrack.track(remotePeerId)
+
+    promise.catch(err => {
+      if (!timeoutRegex.test(err)) {
+        console.error('@@ fixme connection error catch @@', err)
+      }
+    })
+
     await this._con.connect(uri.href)
     return promise
   }
@@ -280,7 +317,6 @@ class P2pBackendHackmodePeer extends AsyncClass {
       Date.now()
     )
   }
-
 
   /**
    * Return a peerId in a log friendly format
