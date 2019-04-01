@@ -1,12 +1,14 @@
 # Holochain Basic Chat
 
+[[ TEMPORARY: make sure nodejs is installed, if it isn't already: https://nodejs.org]]
+
 First, and only the first time, run `setup.sh`
 
 Once you've run that once, you can run this anytime: `run.sh`
 
 hit Enter when it asks for the passphrase.
 
-Double click `Holochain | Chat` to open the app
+Double click `app-link.webloc` to open the app in the browser, or navigate to [http://localhost:3000](http://localhost:3000).
 
 ## Built With
 

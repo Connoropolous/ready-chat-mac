@@ -1,0 +1,38 @@
+~*~ 2019-4-1 14:15:26 - 1554142526778 (n3h-bin) [w] attempting read stdin
+~*~ 2019-4-1 14:15:26 - 1554142526782 (n3h-bin) [w] got stdin config!
+{"webproxy":{"connection":{"rsaBits":1024,"bind":["wss://0.0.0.0:0/"]},"wssAdvertise":"auto","wssRelayPeers":null}}
+~*~ 2019-4-1 14:15:26 - 1554142526788 (wss-server-utils) [w] no tls data found, generating new keys and cert
+~*~ 2019-4-1 14:15:27 - 1554142527104 (wss-connection) [i] listening at wss://127.0.0.1:53941/
+~*~ 2019-4-1 14:15:27 - 1554142527106 (p2p-backend) [i] generating transport id seed randomly
+~*~ 2019-4-1 14:15:27 - 1554142527111 (p2p-backend) [i] peerId:
+HcSCIznDJo3R73gprk4k7HkzB9CmMixajxS9hd7RQ8onns566X9Xh8bMgrb3huz
+~*~ 2019-4-1 14:15:26 - 1554142526786 (*n3hMode*) [i] @@ CONFIG @@
+{
+  "ipc": {
+    "connection": {
+      "rsaBits": 1024,
+      "bind": [
+        "wss://127.0.0.1:0/"
+      ]
+    }
+  },
+  "webproxy": {
+    "connection": {
+      "rsaBits": 1024,
+      "bind": [
+        "wss://0.0.0.0:0/"
+      ]
+    },
+    "wssAdvertise": "auto",
+    "wssRelayPeers": null
+  }
+}
+~*~ 2019-4-1 14:15:27 - 1554142527131 (wss-server-utils) [i] loaded rsa fingerprint
+k7SeFOLwtGf6KBnHC0jF2TTXxwI=
+~*~ 2019-4-1 14:15:27 - 1554142527135 (@hackmode@) [i] p2p bound
+wss://192.168.100.162:53942/?a=HcSCIznDJo3R73gprk4k7HkzB9CmMixajxS9hd7RQ8onns566X9Xh8bMgrb3huz
+~*~ 2019-4-1 14:15:27 - 1554142527079 (wss-server-utils) [i] loaded rsa fingerprint
+k7SeFOLwtGf6KBnHC0jF2TTXxwI=
+~*~ 2019-4-1 14:15:27 - 1554142527133 (wss-connection) [i] listening at wss://192.168.100.162:53942/
+~*~ 2019-4-1 14:15:26 - 1554142526783 (n3h-bin) [i] executing mode HACK
+~*~ 2019-4-1 14:22:17 - 1554142937477 (n3h-bin) [i] n3h exited cleanly
