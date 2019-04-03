@@ -6,8 +6,6 @@ First, and only the first time, run `setup.sh`
 
 Once you've run that once, you can run this anytime: `run.sh`
 
-hit Enter when it asks for the passphrase.
-
 Double click `app-link.webloc` to open the app in the browser, or navigate to [http://localhost:3000](http://localhost:3000).
 
 ## Built With
