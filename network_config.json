@@ -6,7 +6,7 @@
                 "wss://0.0.0.0:5555/"
             ]
         },
-        "wssAdvertise": "wss://192.168.0.17:5555/",
+        "wssAdvertise": "wss://0.0.0.0:5555/",
         "wssRelayPeers": null
     }
 }
